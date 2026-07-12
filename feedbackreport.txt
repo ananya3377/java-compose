@@ -1,0 +1,77 @@
+Batch 2 Feedback Report
+June 1, 2026
+
+
+Overall Progress
+Batch 2 is a significant step forward. The acceptance rate improved from roughly 12% in Batch 1 to 62% in Batch 2, and average reviewer preference rose from 2.0 to 3.5. Several contributors are now consistently producing accept-quality work, and some of the accepted tasks received strong praise from reviewers ("high-quality," "great task," "couldn't find any major violations").
+
+Just as importantly, many of the Batch 1 blockers have been largely resolved. Canary strings dropped from appearing in a third of submissions to just 2 out of 53. The spam/filler-content pattern is gone entirely. Test dependencies incorrectly placed in tests/ dropped from a third of submissions to a handful. These were the mechanical issues we flagged last round, and the team clearly acted on the feedback.
+
+That said, 20 of 53 submissions were still rejected, and a large majority of accepted tasks were accepted with noted issues that still need fixing. The remaining problems cluster around a few specific areas, detailed below.
+
+
+The #1 Issue: Rubrics Referencing Tests or Testing Logic
+This appeared in 16 of 20 rejections and was also noted in 22 of 33 accepted tasks. It is by far the most widespread issue in the batch.
+
+Per the project's rubric guidelines, rubric criteria should describe observable agent behavior during the solve process, not reference the test harness, verifier, test.sh, test_outputs.py, or /tests/ in any way. The agent never sees the tests, so rubric criteria framed around testing logic don't describe anything the agent would actually do.
+
+Example of what to avoid in rubrics:
+
+"Agent passes the verifier checks for milestone 1"
+"Agent's solution satisfies test_m2.py assertions"
+
+Example of what to write instead:
+
+"Agent correctly configures the database connection string in /app/config.yaml, +3"
+"Agent runs the migration without dropping existing data, +2"
+
+This is flagged as a high-severity issue by reviewers. While some tasks were still accepted despite it (because the underlying task quality was strong), cleaning this up across the board would immediately improve the review experience and reduce back-and-forth.
+
+
+Remaining Issues by Frequency
+2. Hints and answer leakage in the environment (7 of 20 rejections)
+Still the second most common rejection reason. The patterns reviewers called out include // BUG: comments in source code that name the exact defect, // TODO: comments describing what to implement, and markdown documentation files that give step-by-step implementation guidance (e.g., a wal-format.md with a "recovery semantics" section that walks through the solution, or a cli-spec.md with implementation-level detail).
+
+The key principle: documentation files in the environment can describe contracts, APIs, and expected behavior (what the system should do), but should not describe how to fix or implement it. Comments in code should look like what a real developer would leave in a codebase, not like debugging breadcrumbs pointing at the answer.
+3. Rubric formatting issues (6 of 20 rejections)
+Several submissions had rubric criteria that didn't start with "Agent," used invalid score values (only +/- 1, 2, 3, or 5 are allowed, never 4), or were missing the required minimum of 3 negative criteria. A few also had milestone rubric counts that didn't match the number of milestones in the task, or cumulative positive scores outside the 10-40 range.
+4. No rubrics generated on the platform (5 of 20 rejections)
+This is down from nearly half the batch last time, but still happening. A few tasks included a local rubric.md file instead of entering criteria in the platform UI. Rubrics must be authored in the UI to be reviewable.
+5. Solution scoping for milestone tasks (noted in 20 of 53 total reviews)
+Many milestone tasks had solve.sh containing the actual implementation instead of acting as a wrapper that invokes solveN.sh files. The expected structure is: solution/solve.sh chains the milestone scripts, while solution/solve1.sh, solution/solve2.sh, etc. each contain the implementation scoped to that milestone only. Each solveN.sh should be independently scoped and not re-run prior milestones' solutions.
+
+This was noted even in many accepted tasks, so it's clearly a widespread misunderstanding of the milestone structure rather than a quality problem.
+6. Test coverage gaps (5 of 20 rejections)
+Reviewers and automated checks flagged missing test coverage in several submissions, such as an instruction requiring case-insensitive validation that had no corresponding test, or edge cases described in the prompt but not asserted anywhere. Every requirement stated or implied in the instructions should map to at least one test.
+7. Unnecessary or invalid metadata (6 of 20 rejections)
+The name field in task.toml is not a required or recognized field and should be removed. Similarly, workdir only applies to milestone tasks, tool_specific is not a valid subcategory, and flags like gpus, gpu_types, and docker_flags should only appear when actually needed.
+
+
+Resolved from Batch 1
+These former top issues are now rare or eliminated entirely:
+
+Canary strings — down from 8/24 to 2/53
+Spam/filler markdown — not flagged in any Batch 2 submission
+Test dependencies in tests/ — down from 8/24 to 2/53 (and one of those was a Batch 1 carryover)
+LLM-generated feel — flagged in only 1 of 53
+
+
+What's Working Well
+Reviewers called out several strong points across the batch:
+
+Concise, natural instructions — multiple reviewers noted instructions that "sound casual," are "succinct," and "don't read like a specification document." This is exactly the prompt-styling target.
+Realistic, interesting task premises — ETL pipeline fixes, Kotlin debugging, Go protoc-plugin issues, MagickWand/C debugging. These are the kinds of tasks that resonate with developers.
+Good Dockerfile practices — many submissions now reflect best practices with pinned dependencies and proper structure.
+Clean environments — reviewers noted environments that "look realistic" and "don't give hints" in several accepted tasks.
+Strong underlying task quality even in some rejections — two rejected tasks were called out as "accept-quality" underneath, blocked only by rubric formatting. That's a very different position than Batch 1.
+
+
+Recommended Focus Areas Moving Forward
+Rubric hygiene is the single highest-leverage fix. Remove all references to tests, testing logic, verifier, test.sh, /tests/, or /solution/ from rubric criteria. Frame every criterion around what the agent does during the solve, not what the test harness checks afterward. This alone would have prevented or cleaned up the majority of noted issues across both accepted and rejected tasks.
+
+Do a "hint audit" on every environment file. Before submitting, read each code comment and markdown file as if you're the agent. If a comment says BUG:, TODO: implement X, or walks through implementation steps, rewrite it into neutral language or remove it.
+
+Standardize milestone solution structure. For every milestone task: solve.sh is a thin wrapper that calls solve1.sh, solve2.sh, etc. Each solveN.sh contains only its own milestone's implementation and doesn't re-execute previous milestones.
+
+Remove the name field from task.toml. It's not part of the spec and gets flagged on almost every submission that includes it.
+

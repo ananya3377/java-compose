@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "model_variant": {"type": "string"},
+    "threshold": {"type": "number"},
+    "warmup_policy": {"type": "string"},
+    "analysis_profile": {"type": "string"},
+    "f1": {"type": "number"},
+    "latency_ms": {"type": "number"},
+    "source": {"type": "string"}
+  },
+  "required": [
+    "model_variant",
+    "threshold",
+    "warmup_policy",
+    "analysis_profile",
+    "f1",
+    "latency_ms",
+    "source"
+  ]
+}
+
