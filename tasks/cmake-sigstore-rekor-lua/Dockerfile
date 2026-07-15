@@ -1,6 +1,6 @@
 FROM python:3.13-slim
 
-# Install system compilation setups
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     cmake \
     lua5.3 \
@@ -10,14 +10,13 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy the asset folders that we just moved into the task context folder
+# Safely copy every asset folder from the build context into the root /app layout
 COPY tools/ /app/tools/
 COPY artifacts/ /app/artifacts/
 COPY environment/ /app/environment/
 COPY tests/ /app/tests/
-COPY environment/lua/ /app/lua/
 
-# Position solve.sh at the expected root execution path
+# Make sure the entry script is at /app/solve.sh exactly as expected
 COPY environment/solve.sh /app/solve.sh
 RUN chmod +x /app/solve.sh
 
