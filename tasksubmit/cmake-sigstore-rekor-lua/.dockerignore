@@ -1,0 +1,3 @@
+# Exclude solution implementation and tests from Docker build context to prevent cheating
+solution/lua/
+tests/

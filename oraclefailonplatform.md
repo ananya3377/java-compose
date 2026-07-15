@@ -57,8 +57,9 @@ bash
 stb submissions view SUBMISSION_ID
 
 
-Suggestion for failing Oracle test.
+Suggestion for failing Oracle test:
 
-The submission needs to avoid exec /solution/foo.sh, instead, use bash /solution/foo.sh . This is because the verifier-side /solution mount is nonexec . Use bash instead of exec when calling anything inside /solution.
+- The submission should avoid invoking solution scripts with `exec /solution/foo.sh`. Instead, run them via `bash /solution/foo.sh` because the `/solution` mount is non‑exec. This ensures the script runs correctly in the verifier environment.
+- Ensure any Docker entrypoint script ends with `exec "$@"` so that control is handed over to the downstream command (e.g., the verifier). This prevents the entrypoint from blocking the test runner.
+- Keep the recommendation to use the STB‑CLI for downloading logs.
 
-We strongly recommend using the STB-CLI to download feedback for any failures, and using stb claude to analyze the logs and suggest fixes.

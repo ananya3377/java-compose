@@ -1,0 +1,7 @@
+# Release artifacts attested in the Sigstore Rekor transparency log.
+
+[[artifacts]]
+name = "release-bundle"
+path = "artifacts/release-bundle.tar.gz"
+log_index = 42
+identity = "sigstore-community@rekor.dev"

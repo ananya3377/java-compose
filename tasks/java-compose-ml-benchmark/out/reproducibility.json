@@ -1,0 +1,9 @@
+{
+  "model_variant": "vit-b-16",
+  "threshold": 0.55,
+  "warmup_policy": "discard-15",
+  "analysis_profile": "triage",
+  "f1": 1.0000,
+  "latency_ms": 181.6,
+  "source": "archived-samples"
+}

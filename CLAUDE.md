@@ -25,6 +25,7 @@ The memory layer holds time-bounded overrides and durable pointers. It is loaded
 | feedback | `feedback_issues_txt_before_zip.md` | Run `rules/40-workflow/review-feedback-issues.md` before any zip; fix all `issues.txt` blockers |
 | feedback | `feedback_zip_root_layout.md` | Zip to `tasksubmit/`, flat root |
 | feedback | `feedback_ruff_clean_tests.md` | F401 / F841 are blockers in `tests/` and `verifier-tools/` |
+| feedback | `feedback_scientific_computing_category.md` | The category of all tasks must be scientific-computing only, and all data-processing / software-development terms must be replaced with scientific equivalents. |
 | reference | `reference_harbor_milestone_cli.md` | Milestone tasks need harbor ≥ 0.8.0 |
 | reference | `reference_quality_gate_commands.md` | Exact CLI for ruff / abs-path / oracle / nop |
 

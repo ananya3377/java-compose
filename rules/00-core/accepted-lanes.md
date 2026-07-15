@@ -6,7 +6,7 @@ These are the lanes that survive review. Build inside them; do not bargain.
 
 ## BLOCKED CATEGORIES (as of 2026-07-11)
 
-> **`software-engineering`, `debugging`, and `data-processing` categories are blocked from submission.** The team has reached capacity on these categories. Do not start new tasks with `category = "software-engineering"`, `category = "debugging"`, or `category = "data-processing"`. Any submission using these categories will be rejected. Choose an alternative category from the valid list (`build-and-dependency-management`, `system-administration`, `devops`, `distributed-systems`, `optimization`, `security`, `scientific-computing`, `machine-learning`, etc.).
+> **`software-engineering`, `debugging`, and `data-processing` categories are blocked from submission.** The team has reached capacity on these categories. The category of all submissions must be `scientific-computing` only (nothing other). All relevant terms must be changed from software development/data processing to scientific computing equivalents. Choose `category = "scientific-computing"`.
 >
 > **Milestone tasks are also blocked (max limit reached).** Do not start new milestone tasks (`steps/milestone_N/` layout, `workdir`/milestone-only fields). The team has reached the milestone-task cap. Build **flat (non-milestone)** tasks only. Any new milestone submission will be rejected.
 

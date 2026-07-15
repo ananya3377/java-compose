@@ -1,0 +1,10 @@
+verify:
+  preset: release
+  rekor:
+    base_url: "http://127.0.0.1:8787"
+  policy:
+    allowed_identities:
+      - "sigstore-community@rekor.dev"
+    required_annotations:
+      - "software.reproducibility=true"
+    min_log_index: 42

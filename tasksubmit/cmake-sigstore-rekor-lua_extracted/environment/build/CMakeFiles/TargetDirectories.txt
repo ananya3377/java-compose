@@ -1,0 +1,4 @@
+/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/build/CMakeFiles/static-analysis.dir
+/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/build/CMakeFiles/verify-release.dir
+/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/build/CMakeFiles/edit_cache.dir
+/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/build/CMakeFiles/rebuild_cache.dir
