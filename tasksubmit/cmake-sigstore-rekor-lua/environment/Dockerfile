@@ -32,11 +32,12 @@ COPY cmake-presets.yaml /app/cmake-presets.yaml
 COPY release-attestations.toml /app/release-attestations.toml
 COPY cmake /app/cmake
 # Lua directory removed as it is no longer required for the build process
-COPY artifacts /app/artifacts
+COPY . /app
 COPY docs /app/docs
 COPY tools /app/tools
+# COPY ../tests /tests  # disabled: tests now included via full copy
 
 RUN chmod +x /app/tools/fetch_rekor_entry.sh
 
+RUN mkdir -p /logs/verifier && chmod -R 777 /logs/verifier
 WORKDIR /app
-

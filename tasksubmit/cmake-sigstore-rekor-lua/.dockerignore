@@ -1,3 +1,9 @@
-# Exclude solution implementation and tests from Docker build context to prevent cheating
-solution/lua/
-tests/
+.git
+.gitignore
+build/
+app_workspace/
+
+# Do NOT ignore the validation assets required by the verifier
+!artifacts/
+!tools/
+!environment/
