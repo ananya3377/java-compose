@@ -50,7 +50,7 @@ function M.load_from_preset(_preset_path, attest_path)
   end
 
   return {
-    rekor_base_url = os.getenv("REKOR_BASE_URL") or "http://127.0.0.1:8787",
+    rekor_base_url = os.getenv("REKOR_BASE_URL") or "https://rekor.sigstore.dev",
     allowed_identities = {},
     required_annotations = {},
     min_log_index = 0,

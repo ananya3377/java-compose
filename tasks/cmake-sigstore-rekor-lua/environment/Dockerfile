@@ -1,0 +1,43 @@
+# Using Python 3.11 slim as base because it provides apt and allows installing Lua 5.4.
+# This image standardizes the environment for both Python and CMake.
+FROM python:3.11-slim-bookworm
+
+ENV SHELL=/bin/bash
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        asciinema \
+        ca-certificates \
+        cmake \
+        curl \
+        lua5.4 \
+        liblua5.4-dev \
+        make \
+        python3 \
+        python3-pip \
+        python3-venv \
+        tmux \
+        coreutils zsh \
+    && mkdir -p /opt/homebrew/bin \
+    && ln -s /usr/bin/zsh /opt/homebrew/bin/zsh \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY verifier-requirements.lock /tmp/verifier-requirements.lock
+RUN python3 -m venv /opt/verifier-venv \
+ && /opt/verifier-venv/bin/pip install --require-hashes --no-deps --no-cache-dir \
+      -r /tmp/verifier-requirements.lock
+
+COPY CMakeLists.txt /app/CMakeLists.txt
+COPY cmake-presets.yaml /app/cmake-presets.yaml
+COPY release-attestations.toml /app/release-attestations.toml
+COPY cmake /app/cmake
+# Lua directory removed as it is no longer required for the build process
+COPY . /app
+COPY docs /app/docs
+COPY tools /app/tools
+# COPY ../tests /tests  # disabled: tests now included via full copy
+
+RUN chmod +x /app/tools/fetch_rekor_entry.sh
+
+RUN mkdir -p /logs/verifier && chmod -R 777 /logs/verifier
+WORKDIR /app

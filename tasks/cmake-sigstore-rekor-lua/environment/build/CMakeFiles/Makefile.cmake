@@ -11,13 +11,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.4.0/CMakeSystem.cmake"
   "/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/cmake/StaticAnalysis.cmake"
   "/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/cmake/VerifyRelease.cmake"
-  "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake"
-  "/opt/homebrew/share/cmake/Modules/CMakeSystem.cmake.in"
   "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
   "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
-  "/opt/homebrew/share/cmake/Modules/CMakeUnixFindMake.cmake"
   "/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
   "/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake"
   "/opt/homebrew/share/cmake/Modules/FindPython/Support.cmake"
@@ -35,7 +32,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/4.4.0/CMakeSystem.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

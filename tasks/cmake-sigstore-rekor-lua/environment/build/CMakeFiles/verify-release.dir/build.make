@@ -68,7 +68,7 @@ include CMakeFiles/verify-release.dir/progress.make
 
 CMakeFiles/verify-release:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Verifying release attestations against Rekor"
-	cd /Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment && /opt/homebrew/bin/cmake -E env APP_ROOT=/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment LUA_PATH="/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/lua/?.lua " lua /Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/lua/verify_release.lua
+	cd /Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment && /opt/homebrew/bin/cmake -E env LUA_PATH="/Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/lua/?.lua " lua /Users/ananyasrivastava/Downloads/tasking_skeleton/tasks/cmake-sigstore-rekor-lua/environment/lua/verify_release.lua
 
 CMakeFiles/verify-release.dir/codegen:
 .PHONY : CMakeFiles/verify-release.dir/codegen
